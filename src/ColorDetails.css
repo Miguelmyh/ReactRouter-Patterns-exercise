@@ -1,0 +1,13 @@
+.ColorDetails-color {
+  height: 30px;
+  width: 30px;
+  margin-left: 20px;
+}
+
+.ColorDetails-container {
+  display: flex;
+  justify-content: starta;
+}
+.ColorDetails-container h4 {
+  margin: 0;
+}

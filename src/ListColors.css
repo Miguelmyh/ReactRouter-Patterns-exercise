@@ -1,0 +1,23 @@
+.ListColors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  width: 100%;
+}
+
+.ListColors-ul {
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  text-align: center;
+}
+
+.ListColors-ul a {
+  color: red;
+}
+.ListColors-ul a:hover {
+  text-decoration: none;
+  color: steelblue;
+  transition: 0.1s;
+}

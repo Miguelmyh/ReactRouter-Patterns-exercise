@@ -1,18 +1,46 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import DogList from "./DogList";
-import DogDetails from "./DogDetails";
-import FilterDog from "./FilterDog";
+// import DogList from "./DogList";
+// import DogDetails from "./DogDetails";
+// import FilterDog from "./FilterDog";
+import { v4 as uuid } from "uuid";
+import ListColors from "./ListColors";
+import FilterColor from "./FilterColor";
+import ColorForm from "./ColorForm";
 
 function App(props) {
+  const INITIAL_STATE = [
+    {
+      name: "red",
+      value: "red",
+      id: uuid(),
+    },
+    {
+      name: "black",
+      value: "black",
+      id: uuid(),
+    },
+  ];
+  const [colors, setColors] = useState(INITIAL_STATE);
+
+  const addColor = (color) => {
+    console.log("color", color);
+    setColors((oldColors) => [...oldColors, { ...color, id: uuid() }]);
+  };
   return (
     <div className="App">
       <Routes>
-        <Route path="/dogs" element={<DogList dogs={props.dogs} />} />
-        <Route path="/dogs/:name" element={<FilterDog dogs={props.dogs} />} />
-        <Route path="*" element={<Navigate to={"/dogs"} />} />
+        {/* <Route path="/dogs" element={<DogList dogs={props.dogs} />} />
+        <Route path="/dogs/:name" element={<FilterDog dogs={props.dogs} />} /> 
+        <Route path="*" element={<Navigate to={"/dogs"} />} />*/}
+        <Route path="/colors" element={<ListColors colors={colors} />} />
+        <Route
+          path="/colors/:color"
+          element={<FilterColor colors={colors} />}
+        />
+        <Route path="/colors/new" element={<ColorForm addColor={addColor} />} />
+        <Route path="*" element={<Navigate to={"/colors"} />} />
       </Routes>
     </div>
   );
